@@ -93,9 +93,6 @@
     <Reference Include="MelonLoader">
       <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\TheLongDark\MelonLoader\net6\MelonLoader.dll</HintPath>
     </Reference>
-    <Reference Include="ModData">
-      <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\ModData.dll</HintPath>
-    </Reference>
     <Reference Include="ModSettings">
       <HintPath>..\..\..\..\Program Files (x86)\Steam\steamapps\common\TheLongDark\Mods\ModSettings.dll</HintPath>
     </Reference>

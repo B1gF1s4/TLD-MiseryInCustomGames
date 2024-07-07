@@ -7,6 +7,7 @@ namespace MiseryInCustomGames
 		public override void OnInitializeMelon()
 		{
 			base.OnInitializeMelon();
+
 			Settings.OnLoad();
 		}
 	}

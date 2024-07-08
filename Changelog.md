@@ -2,7 +2,7 @@
 
 ## 0.7.0
 
-- ** THIS WILL BREAK SAVES STARTED WITH VERSION 0.6.0 **
+- **THIS WILL BREAK SAVES STARTED WITH VERSION 0.6.0**
 - adds options to start with all misery afflictions enabled
 - changed patch to init misery manager to TeleportPlayerAfterSceneLoad
 - changed settings type to enum (Disabled, Vanilla, OnSpawn)

@@ -3,10 +3,17 @@ using ModSettings;
 
 namespace MiseryInCustomGames
 {
+
+	public enum MiseryType
+	{
+		Disabled,
+		Vanilla,
+		OnSpawn
+	}
+
 	public static class Settings
 	{
-
-		public const string MISERY_ENABLED_FIELD_NAME = "miseryAfflictionsEnabled";
+		public const string MISERY_TYPE_FIELD_NAME = "miseryType";
 		public const string MISERY_INIT_FIELD_NAME = "miseryAfflictionsInitialized";
 		public const string MISERY_HOURS_NEXT_FIELD_NAME = "miseryAfflictionsHourseNext";
 
@@ -18,22 +25,29 @@ namespace MiseryInCustomGames
 			ModSettings.AddToCustomModeMenu(Position.BelowHealth);
 		}
 
-		public static bool IsMiseryEnabledInModdata()
+		public static MiseryType? GetMiseryTypeFromModdata()
 		{
-			var setting = DataManager.Load(MISERY_ENABLED_FIELD_NAME);
+			var value = DataManager.Load(MISERY_TYPE_FIELD_NAME);
 
-			if (string.IsNullOrEmpty(setting))
-				return false;
+			if (string.IsNullOrEmpty(value))
+				return null;
 
-			return bool.Parse(setting);
+			if (Enum.TryParse(typeof(MiseryType), value, true, out var miseryType))
+			{
+				if (miseryType == null)
+					return MiseryType.Disabled;
+
+				return (MiseryType)miseryType;
+			}
+
+			return MiseryType.Disabled;
 		}
 	}
 
 	public class ModSettings : ModSettingsBase
 	{
 		[Name("Misery Afflictions")]
-		[Description("Enable Misery Afflictions")]
-		public bool EnableMisery = false;
-
+		[Description("Vanilla: regular timeline, OnSpawn: all afflictions from the start")]
+		public MiseryType MiseryType = MiseryType.Disabled;
 	}
 }
